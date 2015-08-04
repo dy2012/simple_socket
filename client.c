@@ -14,7 +14,8 @@ int main(int argc, char** argv) {
   int sockfd, n, rec_len;
   char recvline[4096], sendline[4096];
   char buf[MAXLINE];
-  struct sockaddr_in servaddr; if(argc != 2) {
+  struct sockaddr_in servaddr;
+  if(argc != 2) {
     printf("Usage: ./client <IPaddress>\n");
     exit(0);
   }
@@ -45,9 +46,10 @@ int main(int argc, char** argv) {
   }
 
   if((rec_len = recv(sockfd, buf, MAXLINE,0)) == -1) {
-     perror("recv error");
-     exit(1);
+    printf("recv error: %s(errno: %d)\n");
+    exit(1);
   }
+
   buf[rec_len]  = '\0';
   printf("Received : %s ",buf);
   close(sockfd);
