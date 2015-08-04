@@ -11,7 +11,7 @@
 #define DEFAULT_PORT 8000
 
 int main(int argc, char** argv) {
-  int listenfd, connfd, addr_len;
+  int listenfd, connfd;
   struct sockaddr_in servaddr;
   char buff[4096];
   int n;
